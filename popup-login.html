@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./buttons.css">
+    <style>
+        body {
+            width: 300px;
+            height: 500px;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        form {
+            align-items: center;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            box-sizing: border-box;
+            background-color: #16a085;
+            flex-wrap: wrap;
+        }
+
+        input {
+            border-radius: 5px;
+            margin: 10px;
+            font-size: 120%;
+            width: 75%;
+            height: 5%;
+            padding: 10px;
+            border: none;
+            font-family: monospace;
+            transition-duration: 0.3s;
+        }
+
+        input:focus {
+            transform: scale(1.2);
+        }
+
+        .white_placeholder::placeholder {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <input type="email" name="email" id="email" placeholder="Email">
+        <input type="password" name="password" id="password" placeholder="Password">
+        <div class="buttons">
+            <button class="btn action_btn" type="submit" name="signin">Sign In</button>
+            <button class="btn action_btn" type="button" name="signup">Sign Up</button>
+        </div>
+    </form>
+    <script src="./popup-login-script.js"></script>
+</body>
+
+</html>

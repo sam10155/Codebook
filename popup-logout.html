@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <head>
+
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <link rel="stylesheet" href="./mainpage.css">
+   </head>
+
+   <body>
+      <form class="addPass">
+         <div class="siteinfo">
+            <div class="floating-input">
+               <br><input type="text" id="sitename" placeholder="Site Name">
+            </div>
+            <div class="floating-input">
+               <br><input type="text" id="siteurl" placeholder="Site URL">
+            </div>
+            <div class="floating-input">
+               <br><input type="text" id="username" placeholder="Username">
+            </div>
+            <div class="floating-input">
+               <br><input type="text" id="password" placeholder="Password">
+            </div>
+         </div>
+         <button class="btn-combination" type="button" id="addCombination_btn" name="addCombination_btn">Add Combination</button>
+      </form>
+      <form class="searchform">
+         <div class="container">
+            <div id="searchWrapper">
+               <input list="sitenames" type="text" id="searchBar" placeholder="Search by sitename">
+               <datalist id="sitenames"></datalist>
+               <button class="btn-select" type="button" name="showInfo_btn" id="showInfo_btn">Show Info</button>
+            </div>
+         </div>
+      </form>
+      <form class="viewPass">
+         <div class="siteinfo">
+            <div class="floating-input">
+               <br><input type="text" id="currentUsername" placeholder="Username">
+            </div>
+            <div class="floating-input">
+               <br><input type="text" id="currentPassword" placeholder="Password">
+            </div>
+            <div class="floating-input">
+               <br><input type="text" id="newUsername" placeholder="New Username">
+            </div>
+            <div class="floating-input">
+               <br><input type="text" id="newPasssword" placeholder="New Paswword">
+            </div>
+         </div>
+         <div class="buttons">
+            <button class="btn action_btn" type="button" id="editUser_btn">Edit Username</button>
+            <button class="btn action_btn" type="button" id="editPass_btn">Edit Password</button>
+         </div>
+      </form>
+      <div class="signOut">
+         <button type="submit" id="signOut_btn">Sign Out</button>
+      </div>
+      <script src="./popup-logout-script.js"></script>
+   </body>
+
+</html>
