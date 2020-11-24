@@ -4,7 +4,6 @@ const editUser_btn = document.querySelector('#editUser_btn');
 const editPass_btn = document.querySelector('#editPass_btn');
 const signOut_btn = document.querySelector('#signOut_btn');
 
-const sitenamelist = document.getElementById('charactersList');
 const searchBar = document.getElementById('searchBar');
 let hpSites = [];
 
@@ -25,7 +24,7 @@ signOut_btn.addEventListener('mouseleave', () => {
 });
 
 showInfo_btn.addEventListener('click', () => {
-    const sitename = document.querySelector('#searchBar').value;
+    const sitename = document.querySelector('#searchBar').value.toLowerCase();
     console.log(sitename);
 
     chrome.runtime.sendMessage({message: 'requestCombination', payload: {sitename} }, function(response) {
@@ -50,8 +49,10 @@ addCombination_btn.addEventListener('click', () => {
 
     if (sitename && siteurl && user && pass) {
         chrome.runtime.sendMessage({message: 'addCombination', payload: {sitename, siteurl, user, pass} }, function(response) {
-            if (response === 'success') window.location.reload();
-            else {
+            if (response === 'success') {
+                loadSitenames();
+                window.location.reload();
+            } else {
                 //display failed
             }
         });
@@ -68,7 +69,10 @@ editUser_btn.addEventListener('click', () => {
     if (username && username_new) {
         if (username !== username_new) {
             chrome.runtime.sendMessage({message: 'editUsername', payload: {sitename, username_new} }, function(response) {
-                if (response === 'success') document.querySelector('#newUsername').value = "Username edited";
+                if (response === 'success') {
+                    document.querySelector('#newUsername').value = "Username edited";
+                    document.querySelector('#currentUsername').value = username_new;
+                }
             });
         } else {
             //do somthing
@@ -91,6 +95,7 @@ editPass_btn.addEventListener('click', () => {
                 if (response === 'success') 
                 {
                     document.querySelector('#newPassword').value = "Password edited";
+                    document.querySelector('#currentPassword').value = password_new;
                 }
             });
         } else {
@@ -108,10 +113,10 @@ searchBar.addEventListener('keyup', (e) => {
 
    const filteredSitenames = hpSites.filter((sitename) => {
       return (
-         sitename.toLowerCase().includes(searchString)
+        sitename.toLowerCase().includes(searchString)
       );
    });
-   //displaySitenames(filteredSitenames);
+   displaySitenames(filteredSitenames);
 });
 
 function loadSitenames() {
@@ -127,20 +132,13 @@ function loadSitenames() {
     });  
 }
 
-const displaySitenames = (sitenames) => {
+const displaySitenames = (sitename) => {
    for (var key in sitename) {
     var optionElement = document.createElement("option");
     optionElement.value = sitename[key];
     document.getElementById("sitename").appendChild(optionElement);
     }
-    //sitenamelist.innerHTML = htmlString;
 };
-
-for (var key in sitenames) {
-    var optionElement = document.createElement("option");
-    optionElement.value = sitenames[key];
-    document.getElementById("sitenames").appendChild(optionElement);
-  }
 
 signOut_btn.addEventListener('click', () => {
    //send message to background telling backround to delete their credentials
