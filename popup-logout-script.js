@@ -82,13 +82,16 @@ editUser_btn.addEventListener('click', () => {
 
 editPass_btn.addEventListener('click', () => {
     const password = document.querySelector('#currentPassword').value;
-    const password_new = document.querySelector('#newUPassword').value;
+    const password_new = document.querySelector('#newPassword').value;
     const sitename = document.querySelector('#searchBar').value;
 
-    if (username && username_new) {
-        if (username !== username_new) {
+    if (password && password_new) {
+        if (password !== password_new) {
             chrome.runtime.sendMessage({message: 'editPassword', payload: {sitename, password_new} }, function(response) {
-                if (response === 'success') document.querySelector('#newUsername').value = "Password edited";
+                if (response === 'success') 
+                {
+                    document.querySelector('#newPassword').value = "Password edited";
+                }
             });
         } else {
             //do somthing
