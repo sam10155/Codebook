@@ -1,83 +1,95 @@
 body {
-    width: 300px;
-    height: 500px;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-  
-  .siteinfo {
-    margin: 0px 0px;
-  }
-  
-  .siteinfo input {
-    width: 102px;
-    font-family: monospace;
-    margin: 0px 10px;
-  }
-  
-  .floating-input {
-    float: left;
-  }
-  
-  .btn-combination {
-    margin: 10px 20px;
-    font-size: 160%;
-    background-color: #f5c2e0;
-    border-radius: 5px;
-    border: none;
+  width: 300px;
+  height: 500px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.siteinfo {
+  margin: 0px 0px;
+}
+
+.siteinfo input {
+  width: 102px;
+  font-family: monospace;
+  margin: 0px 15px;
+}
+
+.floating-input {
+  float: left;
+}
+
+.btn-combination {
+  display: center;
+  margin: 15px 42px;
+  font-size: 160%;
+  background-color: #f5c2e0;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  color: black;
+  font-family: monospace;
+  font-weight: bold;
+  transition-duration: 0.3s;
+  padding: 10px;
+}
+
+.addPass {
+  margin: 0px 10px;
+}
+
+.viewPass {
+  margin: 0px 10px;
+}
+
+.btn {
+  align-items: center;
+  font-size: 140%;
+  background-color: #f5c2e0;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  color: black;
+  font-family: monospace;
+  font-weight: bold;
+  transition-duration: 0.3s;
+  padding: 10px;
+  margin: 10px 0px;
+}
+
+.action_btn {
+  display: inline-block;
+  width: calc(40% - 0px);
+}
+
+.container {
+    padding: 40px;
+    margin: 0 auto;
+    max-width: 1000px;
     text-align: center;
-    color: black;
-    font-family: monospace;
-    font-weight: bold;
-    transition-duration: 0.3s;
-    padding: 10px;
-  }
-  
-  .addPass {
-    margin: 0px 10px;
-  }
-  
-  .viewPass {
-    margin: 0px 10px;
-  }
-  
-  .btn {
-    align-items: center;
-    font-size: 140%;
-    background-color: #f5c2e0;
-    border-radius: 5px;
-    border: none;
-    text-align: center;
-    color: black;
-    font-family: monospace;
-    font-weight: bold;
-    transition-duration: 0.3s;
-    padding: 10px;
-    margin: 10px 0px;
-  }
-  
-  .action_btn {
-    display: inline-block;
-    width: calc(40% - 0px);
-  }
-  
-  .container {
-      padding: 40px;
-      margin: 0 auto;
-      max-width: 1000px;
-      text-align: center;
-  }
-  
-  #searchBar {
-      width: 100%;
-      height: 32px;
-      border-radius: 3px;
-      border: 1px solid #eaeaea;
-      padding: 5px 10px;
-      font-size: 12px;
-  }
-  
-  #searchWrapper {
-      position: relative;
-  }
+}
+
+#searchBar {
+    width: 100%;
+    height: 32px;
+    border-radius: 3px;
+    border: 1px solid #eaeaea;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+#searchWrapper {
+    position: relative;
+    
+}
+
+.edt_btn {
+  margin: 10px 13px;
+}
+
+#signOut_btn {
+  margin: 10px 88px; 
+  display: inline-block;
+  width: calc(40% - 0px);
+}
