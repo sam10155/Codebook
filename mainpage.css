@@ -95,3 +95,7 @@ body {
   display: inline-block;
   width: calc(40% - 0px);
 }
+
+.btn-select {
+  margin-left: 20px;
+}
