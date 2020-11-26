@@ -43,21 +43,26 @@ document.querySelector('form').addEventListener('submit', event => {
 
     //Check if passwords match, then send information to server. Inform user of invalid information.
     if (pass === passVerify) {
-        console.log("Match");
-        if (first && last && email && pass && passVerify) {
-            console.log("Form Valid");
-            
-            chrome.runtime.sendMessage({message: 'signup', payload: {first, last, email, pass} }, function(response) {
-                if (response === 'success') window.location.replace('./popup-tandc.html');
-                else {console.log(response)};
-            }); 
+        if (checkPass(pass)) {
+            console.log("Match");
+            if (first && last && email && pass && passVerify) {
+                console.log("Form Valid");
+                
+                chrome.runtime.sendMessage({message: 'signup', payload: {first, last, email, pass} }, function(response) {
+                    if (response === 'success') window.location.replace('./popup-tandc.html');
+                    else {console.log(response)};
+                }); 
+            } else {
+                document.querySelector('#email').placeholder = "Enter an email.";
+                document.querySelector('#password').placeholder = "Enter a password.";
+                document.querySelector('#email').style.backgroundColor = 'red';
+                document.querySelector('#password').style.backgroundColor = 'red';
+                document.querySelector('#email').classList.add('white_placeholder');
+                document.querySelector('#password').classList.add('white_placeholder');
+            }
         } else {
-            document.querySelector('#email').placeholder = "Enter an email.";
-            document.querySelector('#password').placeholder = "Enter a password.";
-            document.querySelector('#email').style.backgroundColor = 'red';
-            document.querySelector('#password').style.backgroundColor = 'red';
-            document.querySelector('#email').classList.add('white_placeholder');
-            document.querySelector('#password').classList.add('white_placeholder');
+            document.querySelector('#password').value = "Too short";
+            document.querySelector('#passwordVerify').value = "";
         } 
     } else {
         console.log("No Match");
@@ -68,3 +73,12 @@ document.querySelector('form').addEventListener('submit', event => {
         document.querySelector('#passwordVerify').value = "";
     }
 });
+
+function checkPass(pass1) {
+    if (pass1.length > 7 ) {
+        return true;
+    } else {
+        return false;
+    }
+
+}

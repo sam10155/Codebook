@@ -91,13 +91,17 @@ editPass_btn.addEventListener('click', () => {
 
     if (password && password_new) {
         if (password !== password_new) {
-            chrome.runtime.sendMessage({message: 'editPassword', payload: {sitename, password_new} }, function(response) {
-                if (response === 'success') 
-                {
-                    document.querySelector('#newPassword').value = "Password edited";
-                    document.querySelector('#currentPassword').value = password_new;
-                }
-            });
+            if (checkPass(password_new)) {
+                chrome.runtime.sendMessage({message: 'editPassword', payload: {sitename, password_new} }, function(response) {
+                    if (response === 'success') 
+                    {
+                        document.querySelector('#newPassword').value = "Password edited";
+                        document.querySelector('#currentPassword').value = password_new;
+                    }
+                });
+            } else {
+                document.querySelector('#newPassword').value = "Too short";
+            }  
         } else {
             //do somthing
         }
@@ -120,6 +124,15 @@ searchBar.addEventListener('keyup', (e) => {
     //console.log(filteredList)
     displaySitenames(filteredList);
 });
+
+function checkPass(pass1) {
+    if (pass1.length > 7 ) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
 
 function loadSitenames() {
     chrome.runtime.sendMessage({message: 'loadsitenames' }, function(response) {
