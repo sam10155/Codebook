@@ -5,7 +5,7 @@ const editPass_btn = document.querySelector('#editPass_btn');
 const signOut_btn = document.querySelector('#signOut_btn');
 
 const searchBar = document.getElementById('searchBar');
-let hpSites = [];
+let siteNameList = [];
 
 signOut_btn.addEventListener('mouseover', () => {
    signOut_btn.style.backgroundColor = 'black';
@@ -109,14 +109,16 @@ editPass_btn.addEventListener('click', () => {
 });
 
 searchBar.addEventListener('keyup', (e) => {
-   const searchString = e.target.value.toLowerCase();
+    const searchString = e.target.value.toLowerCase();
 
-   const filteredSitenames = hpSites.filter((sitename) => {
-      return (
-        sitename.toLowerCase().includes(searchString)
-      );
-   });
-   displaySitenames(filteredSitenames);
+    const filteredList = siteNameList.filter((word) => {
+        return (
+            word.includes(searchString)
+        );
+    });
+    
+    //console.log(filteredList)
+    displaySitenames(filteredList);
 });
 
 function loadSitenames() {
@@ -125,20 +127,22 @@ function loadSitenames() {
             chrome.storage.local.get(['sitenamelist'], function(data) {
                 console.log(data);
 
-                hpSites = data;
-                displaySitenames(); 
+                const buffer = Object.entries(data); 
+                siteNameList = buffer[0][1];
+                displaySitenames(siteNameList);
             });
         }
     });  
 }
 
-const displaySitenames = (sitename) => {
-   for (var key in sitename) {
-    var optionElement = document.createElement("option");
-    optionElement.value = sitename[key];
-    document.getElementById("sitename").appendChild(optionElement);
+function displaySitenames(listArray) {
+    document.getElementById("sitenames").innerHTML = "";
+    for (var key in listArray) {
+        var optionElement = document.createElement("option");
+        optionElement.value = listArray[key];
+        document.getElementById("sitenames").appendChild(optionElement);
     }
-};
+}
 
 signOut_btn.addEventListener('click', () => {
    //send message to background telling backround to delete their credentials
