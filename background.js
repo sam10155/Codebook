@@ -3,7 +3,7 @@ console.log("background script running...");
 let user_signed_in = false;
 let return_session = false;
 
-const server = "http://isaacmorton.ca:1111";
+const server = "https://isaacmorton.ca:1111";
 
 function is_user_signed_in() {
 	return new Promise(resolve => {
