@@ -23,7 +23,7 @@ body {
 
 .btn-combination {
   display: center;
-  margin: 15px 42px;
+  margin: 15px 65px;
   font-size: 160%;
   background-color: #f5c2e0;
   border-radius: 5px;
@@ -66,6 +66,7 @@ body {
 
 .container {
     padding: 40px;
+    padding-left: 18px;
     margin: 0 auto;
     max-width: 1000px;
     text-align: center;
