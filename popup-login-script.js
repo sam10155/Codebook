@@ -63,6 +63,7 @@ document.querySelector('form').addEventListener('submit', event => {
     } else {
         document.querySelector('#email').placeholder = "Enter an email.";
         document.querySelector('#password').placeholder = "Enter a password.";
+        document.querySelector('#email').value = "Does not match";
         document.querySelector('#email').style.backgroundColor = 'red';
         document.querySelector('#password').style.backgroundColor = 'red';
         document.querySelector('#email').classList.add('white_placeholder');
